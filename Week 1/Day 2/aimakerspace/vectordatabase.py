@@ -32,9 +32,10 @@ def apply_threshold(score: float, threshold: float = 0.7) -> bool:
 
 
 class VectorDatabase:
-    def __init__(self, embedding_model: EmbeddingModel = None):
+    def __init__(self, embedding_model: EmbeddingModel = None, threshold: float = 0.65):
         self.vectors = defaultdict(np.array)
         self.embedding_model = embedding_model or EmbeddingModel()
+        self.threshold = threshold
 
     def insert(self, key: str, vector: np.array) -> None:
         self.vectors[key] = vector
@@ -51,17 +52,18 @@ class VectorDatabase:
         ]
 
         scores = [(key, score) for key, score in scores if apply_threshold(score, self.threshold)]
+
         return sorted(scores, key=lambda x: x[1], reverse=True)[:k]
 
     def search_by_text(
         self,
         query_text: str,
-        k: int,
+        #k: int,
         distance_measure: Callable = cosine_similarity,
         return_as_text: bool = False,
     ) -> List[Tuple[str, float]]:
         query_vector = self.embedding_model.get_embedding(query_text)
-        results = self.search(query_vector, k, distance_measure)
+        results = self.search(query_vector, distance_measure) #removed k from here
         return [result[0] for result in results] if return_as_text else results
 
     def retrieve_from_key(self, key: str) -> np.array:
