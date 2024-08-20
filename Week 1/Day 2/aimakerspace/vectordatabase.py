@@ -22,14 +22,6 @@ def manhattan_distance(vector_a: np.array, vector_b: np.array) -> float:
     distance = np.linalg.norm(vector_a - vector_b, ord=1)
     return 1 / (1 + distance)
 
-def apply_threshold(score: float, threshold: float = 0.65) -> bool:
-    """Simple thresholding function."""
-    return score >= threshold
-
-def apply_threshold(score: float, threshold: float = 0.7) -> bool:
-    """Simple thresholding function."""
-    return score >= threshold
-
 
 class VectorDatabase:
     def __init__(self, embedding_model: EmbeddingModel = None, threshold: float = 0.65, default_k: int = 3):
