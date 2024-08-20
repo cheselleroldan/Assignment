@@ -3,7 +3,7 @@ import re
 from typing import List, Tuple
 import PyPDF2
 
-"""
+
 class TextFileLoader:
     def __init__(self, path: str, encoding: str = "utf-8"):
         self.documents = []
@@ -36,57 +36,9 @@ class TextFileLoader:
     def load_documents(self):
         self.load()
         return self.documents
-"""
 
-class TextFileLoader:
-    def __init__(self, path: str, encoding: str = "utf-8"):
-        self.documents = []
-        self.path = path
-        self.encoding = encoding
 
-    def load(self):
-        if os.path.isdir(self.path):
-            self.load_directory()
-        elif os.path.isfile(self.path):
-            if self.path.endswith(".txt"):
-                self.load_file()
-            elif self.path.endswith(".pdf"):
-                self.load_pdf()
-            else:
-                raise ValueError(
-                    "Provided file is not a supported type (.txt, .pdf)."
-                )
-        else:
-            raise ValueError(
-                "Provided path is neither a valid directory nor a file."
-            )
 
-    def load_file(self, file_path=None):
-        file_path = file_path or self.path
-        with open(file_path, "r", encoding=self.encoding) as f:
-            self.documents.append(f.read())
-
-    def load_pdf(self, file_path=None):
-        file_path = file_path or self.path
-        with open(file_path, "rb") as f:
-            reader = PyPDF2.PdfReader(f)
-            text = ""
-            for page in reader.pages:
-                text += page.extract_text()
-            self.documents.append(text)
-
-    def load_directory(self):
-        for root, _, files in os.walk(self.path):
-            for file in files:
-                file_path = os.path.join(root, file)
-                if file.endswith(".txt"):
-                    self.load_file(file_path)
-                elif file.endswith(".pdf"):
-                    self.load_pdf(file_path)
-
-    def load_documents(self) -> List[str]:
-        self.load()
-        return self.documents
 
 class CharacterTextSplitter:
     def __init__(
