@@ -59,7 +59,7 @@ class VectorDatabase:
     def search_by_text(
         self,
         query_text: str,
-        k: int,
+        k: int =  None,
         distance_measure: Callable = cosine_similarity,
         return_as_text: bool = False,
     ) -> List[Tuple[str, float]]:
