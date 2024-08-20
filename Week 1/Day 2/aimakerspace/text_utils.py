@@ -93,6 +93,23 @@ class SentenceTextSplitter:
         for text in texts:
             chunks.extend(self.split(text))
         return chunks
+    
+class PageTextSplitter:
+    def __init__(self, page_marker: str = "The Pmarca Blog Archives"):
+        self.page_marker = page_marker
+
+    def split(self, text: str) -> List[Tuple[int, str]]:
+        # Use a regex pattern to capture the page number and the text on each page
+        pattern = rf"(\d+)\s+{self.page_marker}"
+        matches = re.split(pattern, text)
+
+        pages = []
+        for i in range(1, len(matches), 3):  # Skipping the text part, capturing page numbers and following texts
+            page_number = int(matches[i])
+            page_text = matches[i + 1].strip()  # The text after the page number
+            pages.append((page_number, page_text))
+
+        return pages
 
 
 if __name__ == "__main__":
