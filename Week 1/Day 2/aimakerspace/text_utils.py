@@ -1,5 +1,7 @@
 import os
+import re
 from typing import List
+
 
 
 class TextFileLoader:
@@ -53,6 +55,37 @@ class CharacterTextSplitter:
         chunks = []
         for i in range(0, len(text), self.chunk_size - self.chunk_overlap):
             chunks.append(text[i : i + self.chunk_size])
+        return chunks
+
+    def split_texts(self, texts: List[str]) -> List[str]:
+        chunks = []
+        for text in texts:
+            chunks.extend(self.split(text))
+        return chunks
+    
+
+
+class SentenceTextSplitter:
+    def __init__(
+        self,
+        chunk_size: int = 5,
+        chunk_overlap: int = 1,
+    ):
+        assert (
+            chunk_size > chunk_overlap
+        ), "Chunk size must be greater than chunk overlap"
+
+        self.chunk_size = chunk_size
+        self.chunk_overlap = chunk_overlap
+
+    def split(self, text: str) -> List[str]:
+        # Split the text into sentences using a regex that matches sentence end punctuation.
+        sentences = re.split(r'(?<=[.!?]) +', text)
+        chunks = []
+        
+        for i in range(0, len(sentences), self.chunk_size - self.chunk_overlap):
+            chunk = sentences[i : i + self.chunk_size]
+            chunks.append(' '.join(chunk))
         return chunks
 
     def split_texts(self, texts: List[str]) -> List[str]:
