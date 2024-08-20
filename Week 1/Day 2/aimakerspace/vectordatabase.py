@@ -18,7 +18,11 @@ def euclidean_distance(vector_a: np.array, vector_b: np.array) -> float:
 
 def manhattan_distance(vector_a: np.array, vector_b: np.array) -> float:
     """Computes the Manhattan distance (L1 norm) between two vectors."""
-    return np.sum(np.abs(vector_a - vector_b))
+    # Compute the difference between the vectors
+    diff = vector_a - vector_b
+    
+    # Calculate the L1 norm (Manhattan distance) using np.linalg.norm with ord=1
+    return np.linalg.norm(diff, ord=1)
 
 def mahalanobis_distance(vector_a: np.array, vector_b: np.array, cov_matrix: np.array) -> float:
     """Computes the Mahalanobis distance between two vectors given a covariance matrix."""
