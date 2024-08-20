@@ -68,7 +68,7 @@ class CharacterTextSplitter:
 class SentenceTextSplitter:
     def __init__(
         self,
-        chunk_size: int = 5,
+        chunk_size: int = 10,
         chunk_overlap: int = 1,
     ):
         assert (
