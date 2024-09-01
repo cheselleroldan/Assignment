@@ -1,0 +1,30 @@
+
+
+---
+
+
+## LinkedIn Post Draft on "Extending Llama-3’s Context Ten-Fold Overnight"
+
+🚀 **Hold up, AI enthusiasts! Major breakthrough alert!** 🚀
+
+We're amped to drop some colossal news in the world of large language models. A hot-off-the-press paper, "Extending Llama-3’s Context Ten-Fold Overnight", has blown the roof off with a game-changing revelation: Llama-3's context length has been supercharged from 8,000 tokens to a whopping 80,000 tokens!
+
+🔍 **What's the big deal?**
+This power-up allows Llama-3 to guzzle down and comprehend massive chunks of text in one go, turbocharging its prowess in handling wickedly complex and nuanced tasks across various platforms. Be it dissecting in-depth documents, navigating extended convos, or cracking knotty problems, Llama-3 is now a beast!
+
+⏱ **Turbocharged Efficiency!**
+Check this out, the squad pulled this off using QLoRA fine-tuning, wrapping up the entire training cycle in a mere 8 hours on a single 8xA800 GPU machine. This isn't just an improvement, it's a quantum leap in training efficiency for such large-scale upgrades.
+
+🌍 **Shaking up AI and beyond**
+This souped-up model has been crushing it in diverse evaluation tasks, including natural language understanding, topic retrieval, and long-context language processing. This upgrade is carving out a path for even more dope and versatile AI systems that can really vibe with the world.
+
+🔗 **Dive Deeper**
+For those who love the nitty-gritty, dive into the full paper [here](https://arxiv.org/abs/2404.19553) for a deep exploration of the methodology and implications of this trailblazing research.
+
+👥 **Big Ups to the Crew!**
+Mad props to Peitian Zhang, Ninglu Shao, Zheng Liu, Shitao Xiao, Hongjin Qian, Qiwei Ye, and Zhicheng Dou at the Beijing Academy of Artificial Intelligence and Gaoling School of Artificial Intelligence, Renmin University of China. You guys are absolute legends!
+
+#AI #MachineLearning #LanguageModels #TechGameChangers #ArtificialIntelligence
+
+---
+
