@@ -1,0 +1,6 @@
+{
+    "notebook.output.minimalErrorRendering": false,
+    "notebook.output.scrolling": false,
+    "notebook.output.wordWrap": false,
+    "notebook.output.textLineLimit": 20
+}
